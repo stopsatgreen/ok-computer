@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
 
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+		<title>Hello Computer - Front End London</title>
 
 		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
 		<meta name="author" content="Hakim El Hattab">
@@ -15,10 +15,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+		<link rel="stylesheet" href="css/theme/custom.css" id="theme">
 
 		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Microphone.js -->
+		<link rel="stylesheet" href="js/microphone/microphone.min.css" id="theme">
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -40,336 +43,356 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<section>
-					<h1>Reveal.js</h1>
-					<h3>The HTML Presentation Framework</h3>
-					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
-					</p>
+
+				<section data-background="images/hal-9000.jpg" data-background-size="cover">
+					<h1>Hello Computer</h1>
+					<h2>Front End London, 29/01/15</h2>
 				</section>
 
 				<section>
-					<h2>Hello There</h2>
-					<p>
-						reveal.js enables you to create beautiful interactive slide decks using HTML. This presentation will show you examples of what it can do.
-					</p>
+					<h2>Peter Gasston</h2>
+					<h2>@stopsatgreen</h2>
+					<h2>broken-links.com</h2>
 				</section>
 
-				<!-- Example of nested vertical slides -->
-				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>Slides can be nested inside of each other.</p>
-						<p>Use the <em>Space</em> key to navigate through all slides.</p>
-						<br>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>That's it, time to go back up.</p>
-						<br>
-						<a href="#/2">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
+				<section data-background-color="black" data-background-video="images/moon-gerty.mp4"></section>
 
 				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? Not a problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slides.com" target="_blank">http://slides.com</a>.
-					</p>
-				</section>
-
-				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
-				</section>
-
-				<section>
-					<h2>Touch Optimized</h2>
-					<p>
-						Presentations look great on touch devices, like mobile phones and tablets. Simply swipe through your slides.
-					</p>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
-
-						Write content using inline or external Markdown.
-						Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-
-						```
-						<section data-markdown>
-						  ## Markdown support
-
-						  Write content using inline or external Markdown.
-						  Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
-
-				<section>
-					<section id="fragments">
-						<h2>Fragments</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<p><span class="fragment">... a</span> <span class="fragment">fragmented</span> <span class="fragment">slide.</span></p>
-
-						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
-						</aside>
-					</section>
-					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's different types of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment roll-in">roll-in</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment current-visible">current-visible</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
-					</section>
-				</section>
-
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=slide#/transitions">Slide</a> -
-						<a href="?transition=convex#/transitions">Convex</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a>
-					</p>
-				</section>
-
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						reveal.js comes with a few themes built in: <br>
-						<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a> <br>
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
-					</p>
-				</section>
-
-				<section>
-					<section data-background="#dddddd">
-						<h2>Slide Backgrounds</h2>
-						<p>
-							Set <code>data-background="#dddddd"</code> on a slide to change the background color. All CSS color formats are supported.
-						</p>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png">
-						<h2>Image Backgrounds</h2>
-						<pre><code>&lt;section data-background="image.png"&gt;</code></pre>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png" data-background-repeat="repeat" data-background-size="100px">
-						<h2>Tiled Backgrounds</h2>
-						<pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-					</section>
-					<section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm" data-background-color="#000000">
-						<div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px;">
-							<h2>Video Backgrounds</h2>
-							<pre><code style="word-wrap: break-word;">&lt;section data-background-video="video.mp4,video.webm"&gt;</code></pre>
-						</div>
-					</section>
-				</section>
-
-				<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
-					<h2>Background Transitions</h2>
-					<p>
-						Different background transitions are available via the backgroundTransition option. This one's called "zoom".
-					</p>
-					<pre><code>Reveal.configure({ backgroundTransition: 'zoom' })</code></pre>
-				</section>
-
-				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
-					<h2>Background Transitions</h2>
-					<p>
-						You can override background transitions per-slide.
-					</p>
-					<pre><code style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></pre>
-				</section>
-
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
-
-    var nodes = document.querySelectorAll( selector );
-
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
-					</code></pre>
-					<p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
-
-				<section>
-					<h2>Marvelous List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
-				</section>
-
-				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
-				</section>
-
-				<section>
-					<h2>Tabular Tables</h2>
-					<table>
-						<thead>
-							<tr>
-								<th>Item</th>
-								<th>Value</th>
-								<th>Quantity</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Apples</td>
-								<td>$1</td>
-								<td>7</td>
-							<tr>
-							<tr>
-								<td>Lemonade</td>
-								<td>$2</td>
-								<td>18</td>
-							<tr>
-							<tr>
-								<td>Bread</td>
-								<td>$3</td>
-								<td>2</td>
-							<tr>
-						</tbody>
-					</table>
-				</section>
-
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
-				</section>
-
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
-				</section>
-
-				<section>
-					<h2>Speaker View</h2>
-					<p>There's a <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.</p>
-					<p>Press the <em>S</em> key to try it out.</p>
+					<h2>Input Types</h2>
+					<h3 class="fragment">Touch: Manipulate space</h3>
+					<h3 class="fragment">Keyboard: Data entry</h3>
+					<h3 class="fragment">Voice: Command or query</h3>
 
 					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+						Mouse is legacy input and better served by other means in the future - as this clip shows…
+					</aside>
+				</section>
+
+				<section data-background-color="black" data-background-video="images/startrek-hellocomputer.mp4">
+					<aside class="notes">
+						We are born to talk. Typing is an impediment in many cases.
+					</aside>
+				</section>
+
+				<section id="stat1" data-background="images/stroppy-teen.jpg" data-background-size="cover">
+					<h1>55% of teens</h1>
+					<h1>41% of adults</h1>
+					<h3>use voice search every day<span class="fragment">*</span></h3>
+					<h4 class="fragment">*maybe</h4>
+
+					<aside class="notes">
+						From Google research, but sources not provided. Could be ‘of teens who use, 55% use every day’. http://googleblog.blogspot.co.uk/2014/10/omg-mobile-voice-survey-reveals-teens.html
+					</aside>
+				</section>
+
+				<section data-background="images/crowdedstreet.jpg" data-background-size="cover">
+					<h1>10% of Baidu</h1>
+					<h3>search queries are by voice</h3>
+					<h2 class="fragment">That’s ~500m per day</h2>
+
+					<aside class="notes">
+						Character input is hard, plus high rural illiteracy. http://blogs.wsj.com/digits/2014/11/21/baidus-andrew-ng-on-deep-learning-and-innovation-in-silicon-valley/
+						http://iaminchina.wordpress.com/2010/04/13/crowded-street-in-xian/
+					</aside>
+				</section>
+
+				<section data-background-color="black" data-background-video="images/her-samantha.mp4">
+					<h1 class="fragment reverse-text">Synthesis</h1>
+
+					<aside class="notes">
+						Long history of replicating voice with sound (Brazen Heads back to ~12th C.) but first systems emerged in 1960s. Bell Labs 1961 sang Daisy Bell, coincidentally Arthur C. Clarke was visiting. Today Stephen Hawking uses system with old voice as it’s ‘his’.
+					</aside>
+				</section>
+
+				<section id="synthesis1">
+					<h2>Chrome/Safari</h2>
+					<pre><code data-trim>
+var txt = 'Hello world',
+	say = new SpeechSynthesisUtterance(txt);
+window.speechSynthesis.speak(say);
+					</code></pre>
+
+					<input class="big" value="Hello Front End London">
+					<button class="big">Play</button>
+				</section>
+
+				<section id="synthesis2">
+					<h3><abbr>SSU</abbr> Attributes</h3>
+					<pre><code data-trim contenteditable>
+var txt = 'Hello world',
+    say = new SpeechSynthesisUtterance(txt);
+say.lang = 'en-GB';
+say.pitch = 0.75;
+say.rate = 1.5;
+say.volume = 0.5;
+window.speechSynthesis.speak(say);
+					</code></pre>
+
+					<input class="big" value="Hello F E L" type="text">
+					<button class="big">Play</button>
+					<input type="range" max="3" min="0" step="0.25" value="1" class="big">
+
+					<aside class="notes">
+						Not in Chrome. Show in Safari.
 					</aside>
 				</section>
 
 				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, here's an example:</p>
-					<iframe src="//www.slideshare.net/slideshow/embed_code/42840540" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+					<h2>Methods, Attrs, Events</h2>
+					<h3>Play / Pause / Resume /<br>Cancel / End / Error</h3>
 				</section>
 
 				<section>
-					<h2>Global State</h2>
-					<p>
-						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-						will be added as a class to the document element when the slide is open. This lets you
-						apply broader style changes, like switching the page background.
-					</p>
+					<h2>Synthesis As A Service</h2>
+					<ol>
+						<li>http://developer.att.com/apis/speech</li>
+						<li>https://ws.neospeech.com/</li>
+						<li>https://www.cereproc.com/en/products/cloud</li>
+						<li>http://www.ivona.com/en/for-business/speech-cloud/</li>
+					</ol>
 				</section>
 
-				<section data-state="customevent">
-					<h2>State Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
-Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
+				<section id="neospeech">
+					<h2>Neospeech</h2>
+
+					<pre><code data-trim class="break-word" id="neo1"></code></pre>
+					<pre><code data-trim class="break-word" id="neo2"></code></pre>
+
+					<input class="big" value="Hello F.E.L.">
+					<button class="big" id="neoreq">1</button>
+				</section>
+
+				<section>
+					<h2>SSML</h2>
+
+					<pre><code data-trim contenteditable>
+<speak version="1.0">
+<p>
+	<s>Hello <abbr>FEL</abbr>.</s>
+	<s>This is <prosody rate="-20%">SSML</prosody></s>
+</p>
+</speak>
+					</code></pre>
+				</section>
+
+				<section data-background-color="black" data-background-video="images/startrek-library.mp4">
+					<h1 class="fragment reverse-text">Recognition</h1>
+
+					<aside class="notes">
+						Developed by Bell in 1952. Could recognise numbers spoken by one person. 1970s Carnegie Mellon HARPY could recognise 1,000 words. 1980s Hidden Markov method, chops waves into phonemes and attempts to form words. 2000s improved by deep learning.
+					</aside>
+				</section>
+
+				<section data-background="images/startrek.jpg" data-background-size="cover">
+					<h2>Challenges</h2>
+					<ol class="big">
+						<li class="fragment">Multiple users</li>
+						<li class="fragment">Multiple languages</li>
+						<li class="fragment">Accents</li>
+					</ol>
+				</section>
+
+				<section data-background-color="black" data-background-video="images/siri-scottish.mp4"></section>
+
+				<section>
+					<h2>Web Speech API</h2>
+					<pre><code data-trim contenteditable>
+						var recog = new SpeechRecognition();
+					</code></pre>
+
+					<h2 class="fragment">x-browser</h2>
+					<pre class="fragment"><code data-trim contenteditable>
+var speechRecognition = (
+	window.SpeechRecognition ||
+	window.webkitSpeechRecognition
+);
+var recog = new speechRecognition();
 					</code></pre>
 				</section>
 
 				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press B or . on your keyboard to pause the presentation. This is helpful when you're on stage and want to take distracting slides off the screen.
-					</p>
+					<h3>SpeechRecognition Methods</h3>
+					<pre><code data-trim contenteditable>
+var recog = new SpeechRecognition();
+recog.start();
+recog.stop();
+recog.abort();
+					</code></pre>
 				</section>
 
 				<section>
-					<h2>Much more</h2>
-					<ul>
-						<li>Right-to-left support</li>
-						<li><a href="https://github.com/hakimel/reveal.js#api">Extensive JavaScript API</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#auto-sliding">Auto-progression</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#parallax-background">Parallax backgrounds</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#keyboard-bindings">Custom keyboard bindings</a></li>
-					</ul>
+					<h3>SpeechRecognition Events</h3>
+					<pre><code data-trim contenteditable>
+var recog = new SpeechRecognition();
+recog.onresult = function () {};
+recog.onnomatch = function () {};
+recog.onerror = function () {};
+					</code></pre>
+
+					<aside class="notes">
+						SpeechRecognitionError interface for reporting errors.
+					</aside>
 				</section>
 
-				<section style="text-align: left;">
-					<h1>THE END</h1>
-					<p>
-						- <a href="http://slides.com">Try the online editor</a> <br>
-						- <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
-					</p>
+				<section id="recognition1">
+					<h2 class="trigger"><abbr title="Minimum Viable Script">MVS</abbr></h2>
+					<pre><code data-trim contenteditable>
+var recog = new SpeechRecognition();
+recog.onresult = function (result) {
+	output.textContent = results[0][0].transcript;
+};
+btn.onclick = recog.start();
+					</code></pre>
+
+					<output class="big"></output>
+
+					<aside class="notes">
+						SpeechRecognitionEvent, results list
+					</aside>
+				</section>
+
+				<section id="recognition2">
+					<h3 class="trigger">SpeechRecognition Events</h3>
+					<ol id="recog-events">
+						<li class="fragment">start</li>
+						<li class="fragment">audiostart</li>
+						<li class="fragment">soundstart</li>
+						<li class="fragment">speechstart</li>
+						<li class="fragment">speechend</li>
+						<li class="fragment">soundend</li>
+						<li class="fragment">audioend</li>
+						<li class="fragment">end</li>
+					</ol>
+
+				</section>
+
+				<section id="recognition3">
+					<h2 class="trigger">Interim Results</h2>
+					<pre><code data-trim>
+var recog = new SpeechRecognition();
+recog.interimResults = true;
+					</code></pre>
+					<pre class="fragment"><code data-trim>
+recog.onresult = function (result) {
+	if (result.results[0].isFinal) {…}
+};
+btn.onclick = recog.start();
+					</code></pre>
+
+					<output></output>
+				</section>
+
+				<section>
+					<h2>Continuous</h2>
+					<pre><code data-trim>
+var recog = new SpeechRecognition();
+recog.continuous = true;
+recog.onresult = function (result) {
+	output.textContent = result.results[0][0].transcript;
+};
+					</code></pre>
+					<pre class="fragment"><code data-trim>
+btn.onclick = function () {
+	if (listening) { recog.stop(); }
+	else { recog.start(); }
+}
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>SpeechRTC +</h2>
+					<h2>Web Speech API</h2>
+
+					<aside class="notes">
+						Node online, Web Workers offline. https://wiki.mozilla.org/SpeechRTC_-_Speech_enabling_the_open_web
+					</aside>
+				</section>
+
+				<section>
+					<h2>[Picard demo]</h2>
+
+					<aside class="notes">
+						Basically just matching a string / regex. But mobile searches tend to be more conversational, so we need to discover intent.
+					</aside>
+				</section>
+
+				<section>
+					<h2>[Google demo]</h2>
+				</section>
+
+				<section>
+					<h2>JuliusJS</h2>
+
+					<pre><code data-trim>
+var recog = new Julius();
+recog.onrecognition = function (result) {
+	console.log(result);
+}
+					</code></pre>
+				</section>
+
+				<section data-background="images/api.ai.png" data-background-size="contain"></section>
+
+				<section data-background="images/wit.ai.png" data-background-size="contain"></section>
+
+				<section data-background="images/wit-api.png" data-background-size="contain"></section>
+
+				<section>
+					<h1>Wit + Node</h1>
+					<ol>
+						<li>Web Speech API + text</li>
+						<li class="fragment">Direct speech : GuM, Web Audio API</li>
+					</ol>
+
+					<aside class="notes"> http://blog.groupbuddies.com/posts/39-tutorial-html-audio-capture-streaming-to-node-js-no-browser-extensions
+					</aside>
+				</section>
+
+				<section id="wit1">
+					<h1>Wit.ai</h1>
+					<h2 class="trigger">Microphone.js</h2>
+					<div id="mic1" class="microphone"></div>
+					<output></output>
+				</section>
+
+				<section>
+					<h2>[Wit dashboard demo]</h2>
+				</section>
+
+				<section id="wit2">
+					<h1>Wit.ai</h1>
+					<h2 class="trigger">Response</h2>
+					<div id="mic2" class="microphone"></div>
+				</section>
+
+				<section data-background-color="black" data-background-video="images/2001-hal.mp4"></section>
+
+				<section>
+					<h1>Use Cases</h1>
+					<h2 class="fragment">No screen</h2>
+					<h2 class="fragment">Busy hands</h2>
+				</section>
+
+				<section data-background="images/amazon.echo.jpg" data-background-size="contain">
+					<h2>Amazon : ‘Alexa’</h2>
+					<h2 class="fragment">Apple : Siri</h2>
+					<h2 class="fragment">Google : Voice Search</h2>
+					<h2 class="fragment">Microsoft : Cortana</h2>
+				</section>
+
+				<section data-background-color="black" data-background-video="images/jibo.mp4"></section>
+
+				<section>
+					<h1>Closed Systems :(</h1>
+
+					<aside class="notes">
+						Would be a disaster if Google only plays Play Music, Apple only iTunes, etc. Make an open system, 3rd-party APIs, no ecosystem lock
+					</aside>
+				</section>
+
+				<section>
+					<h1>The End</h1>
+					<h2>Thanks for your patience.</h2>
 				</section>
 
 			</div>
@@ -384,12 +407,12 @@ Reveal.addEventListener( 'customevent', function() {
 			// Full list of configuration options available at:
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
-				controls: true,
+				controls: false,
 				progress: true,
 				history: true,
 				center: true,
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				transition: 'none', // none/fade/slide/convex/concave/zoom
 
 				// Optional reveal.js plugins
 				dependencies: [
@@ -403,6 +426,8 @@ Reveal.addEventListener( 'customevent', function() {
 			});
 
 		</script>
+		<script src="js/microphone/microphone.min.js"></script>
+		<script src="js/custom.js"></script>
 
 	</body>
 </html>
