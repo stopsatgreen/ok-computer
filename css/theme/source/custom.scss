@@ -1,0 +1,86 @@
+/**
+ * A simple theme for reveal.js presentations, similar
+ * to the default theme. The accent color is darkblue.
+ *
+ * This theme is Copyright (C) 2012 Owen Versteeg, https://github.com/StereotypicalApps. It is MIT licensed.
+ * reveal.js is Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+
+// Include theme-specific fonts
+@import url('//fonts.googleapis.com/css?family=Alfa+Slab+One');
+@import url('//fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic');
+
+
+// Override theme settings (see ../template/settings.scss)
+$mainFont: 'Lato', sans-serif;
+$mainColor: #163C50;
+$headingFont: 'Alfa Slab One', Impact, sans-serif;
+$headingColor: $mainColor;
+$headingTextShadow: none;
+$headingTextTransform: none;
+$backgroundColor: #efefef;
+$linkColor: $mainColor;
+$linkColorHover: lighten( $linkColor, 20% );
+$selectionBackgroundColor: rgba(0, 0, 0, 0.99);
+
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+// Code blocks
+
+.reveal {
+
+  pre code {
+    font-size: 125%;
+    line-height: 1.25;
+    margin: 20px auto;
+    overflow: auto;
+    padding: 5px 10px 10px;
+    -moz-tab-size: 4;
+    tab-size: 4;
+    word-wrap: break-word;
+  }
+
+  h1 { line-height: 0.9; }
+
+  h2, h3 { color: lighten( $mainColor, 5% ); }
+
+  .reverse-text { color: #fff; }
+
+  .big { font-size: 150%; }
+
+  output { min-height: 1em; }
+
+  .microphone { margin: 0 auto; }
+
+  .trigger:hover {
+    background-color: yellow;
+    cursor: pointer;
+  }
+
+  #recog-events {
+    border-bottom: 5px solid $mainColor;
+    display: flex;
+    list-style: none;
+    margin-left: 0;
+    transform: translateY(120px);
+
+    li {
+      flex: 1;
+      font-weight: bold;
+      transform: rotate(-45deg);
+      transform-origin: left center;
+    }
+  }
+
+}

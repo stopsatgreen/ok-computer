@@ -1,0 +1,235 @@
+Reveal.addEventListener( 'ready', function( event ) {
+//
+
+  document.querySelector('#synthesis1 button').onclick = function () {
+    var txt = document.querySelector('#synthesis1 input').value,
+        say = new SpeechSynthesisUtterance(txt);
+    window.speechSynthesis.speak(say);
+  };
+
+  document.querySelector('#synthesis2 button').onclick = function () {
+    var txt = document.querySelector('#synthesis2 input[type=text]').value,
+        say = new SpeechSynthesisUtterance(txt);
+    say.lang = 'en-GB';
+    say.pitch = document.querySelector('#synthesis2 input[type=range]').value;
+    // say.rate = 1.25;
+    window.speechSynthesis.speak(say);
+  };
+
+  // NEOSPEECH DEMO
+
+  function encodeXML (s) {
+    return (s
+      .replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    );
+  }
+
+  function parseXML (r) {
+    var parser = new DOMParser();
+    var xmlDoc = parser.parseFromString(r, 'application/xml');
+    xmlDoc = xmlDoc.querySelector('response');
+    return xmlDoc;
+  }
+
+  var neoEmail = 'p_gasston@yahoo.com',
+      neoAcctId = 'd07c6bd47f',
+      neoURL = 'https://tts.neospeech.com/rest_1_1.php?method=';
+  // var neoOut = document.getElementById('neo-result');
+  function get(url) {
+    return new Promise(function(resolve, reject) {
+      var req = new XMLHttpRequest();
+      req.open('GET', url);
+      req.onload = function() {
+        if (req.status == 200) {
+          resolve(req.response);
+        }
+        else {
+          reject(Error(req.statusText));
+        }
+      };
+
+      req.onerror = function() {
+        reject(Error("Network Error"));
+      };
+
+      req.send();
+    });
+  }
+
+  function neoGetResponse (convNo) {
+    var reqURL = neoURL + 'GetConversionStatus&email=' + neoEmail +  '&accountId=' + neoAcctId + '&conversionNumber=' + convNo;
+    get(reqURL).then(function (response) {
+      var responseSafe = encodeXML(response);
+      document.querySelector('#neospeech #neo2').innerHTML = responseSafe;
+
+      var xmlDoc = parseXML(response);
+      if (xmlDoc.getAttribute('statusCode') !== 0) {
+        var audioFile = xmlDoc.getAttribute('downloadUrl');
+        var playFile = new Audio(audioFile);
+        playFile.play();
+      } else {
+        console.log('Not ready');
+      }
+    }, function(error) {
+      console.error('Failed!', error);
+    });
+  }
+
+  function neoSendRequest () {
+    var neoTxt = document.querySelector('#neospeech input').value;
+    var reqOpts = {
+      text : encodeURIComponent(neoTxt),
+      voice : 'TTS_PAUL_DB'
+    };
+    var reqURL = neoURL + 'ConvertSimple&email=' + neoEmail + '&accountId=' + neoAcctId + '&loginKey=LoginKey&loginPassword=46950b9c0218baf8ccae&voice=' + reqOpts.voice + '&outputFormat=FORMAT_WAV&sampleRate=16&text=' + reqOpts.text;
+    get(reqURL).then(function(response) {
+
+      var xmlDoc = parseXML(response);
+      var convNo = xmlDoc.getAttribute('conversionNumber');
+
+      var responseSafe = encodeXML(response);
+      document.querySelector('#neospeech #neo1').innerHTML = responseSafe;
+      var responseBtn = document.createElement('button');
+      responseBtn.classList.add('big');
+      responseBtn.textContent = '2';
+      responseBtn.addEventListener('click', function (e) {
+        e.currentTarget.setAttribute('disabled',true);
+        neoGetResponse(convNo);
+      });
+      document.getElementById('neospeech').appendChild(responseBtn);
+    }, function(error) {
+      console.error('Failed!', error);
+    });
+  }
+
+  document.querySelector('#neospeech #neoreq').onclick = function (e) {
+    e.currentTarget.setAttribute('disabled',true);
+    neoSendRequest();
+  };
+
+  // Speech Recognition
+
+  var rec1 = new webkitSpeechRecognition();
+  rec1.onresult = function (result) {
+    document.querySelector('#recognition1 output').textContent = result.results[0][0].transcript;
+    rec1.stop();
+  };
+  document.querySelector('#recognition1 .trigger').onclick = function () {
+    rec1.start();
+  };
+
+  var rec2 = new webkitSpeechRecognition();
+  rec2.onstart = function () {
+    Reveal.nextFragment();
+  };
+  rec2.onaudiostart = function () {
+    Reveal.nextFragment();
+  };
+  rec2.onsoundstart = function () {
+    Reveal.nextFragment();
+  };
+  rec2.onspeechstart = function () {
+    Reveal.nextFragment();
+  };
+  rec2.onspeechend = function () {
+    Reveal.nextFragment();
+  };
+  rec2.onsoundend = function () {
+    Reveal.nextFragment();
+  };
+  rec2.onaudioend = function () {
+    Reveal.nextFragment();
+  };
+  rec2.onend = function () {
+    Reveal.nextFragment();
+  };
+  document.querySelector('#recognition2 .trigger').onclick = function () {
+    rec2.start();
+  };
+
+  var rec3 = new webkitSpeechRecognition();
+  rec3.interimResults = true;
+  rec3.onresult = function (result) {
+    if (result.results[0].isFinal) {
+      rec3.stop();
+    }
+    document.querySelector('#recognition3 output').textContent = result.results[0][0].transcript;
+  };
+  document.querySelector('#recognition3 .trigger').onclick = function () {
+    rec3.start();
+  };
+
+  // WIT.AI DEMO
+
+  function kv (k, v) {
+    if (toString.call(v) !== '[object String]') {
+      v = JSON.stringify(v);
+    }
+    return k + '=' + v + '\n';
+  }
+
+  function witResults (intent, entities) {
+    var r = kv('intent', intent);
+
+    for (var k in entities) {
+      var e = entities[k];
+
+      if (!(e instanceof Array)) {
+        r += kv(k, e.value);
+      } else {
+        for (var i = 0; i < e.length; i++) {
+          r += kv(k, e[i].value);
+        }
+      }
+      return r;
+    }
+  }
+
+  function startWit1 () {
+
+    var wit1 = new Wit.Microphone(document.querySelector('#wit1 #mic1'));
+
+    wit1.onresult = function (intent, entities) {
+      var r = witResults(intent, entities);
+      document.querySelector('#wit1 output').innerHTML = r;
+    };
+
+    wit1.connect('FMWVZZJC4OQNVUVDLAFHFB3J4KK2NQBX');
+  }
+
+  function startWit2 () {
+
+    var wit2 = new Wit.Microphone(document.querySelector('#wit2 #mic2'));
+
+    wit2.onresult = function (intent, entities) {
+      console.log(entities.contact.value);
+      var txt = 'Hello, ' + entities.contact.value,
+          say = new SpeechSynthesisUtterance(txt);
+      window.speechSynthesis.speak(say);
+    };
+
+    wit2.connect('FMWVZZJC4OQNVUVDLAFHFB3J4KK2NQBX');
+  }
+
+  // EVENTS
+
+  function fragWith (fragEvt) {
+    Reveal.addEventListener('fragmentshown', function( fragEvt ) {
+      if (fragEvt.fragment.localName === 'span') {
+        Reveal.nextFragment();
+      }
+    });
+  }
+
+  Reveal.addEventListener('slidechanged', function( event ) {
+    if (event.currentSlide.id === 'wit1') {
+      startWit1();
+    } else if (event.currentSlide.id === 'wit2') {
+      startWit2();
+    } else if (event.currentSlide.id === 'stat1') {
+      fragWith(event);
+    }
+  });
+
+//
+});
