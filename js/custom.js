@@ -1,12 +1,16 @@
 Reveal.addEventListener( 'ready', function( event ) {
-//
+// Some of this code is horrible, so I apologise in advance.
 
+
+// Simple speech synthesis
   document.querySelector('#synthesis1 button').onclick = function () {
     var txt = document.querySelector('#synthesis1 input').value,
         say = new SpeechSynthesisUtterance(txt);
     window.speechSynthesis.speak(say);
   };
 
+
+// Changing pitch attribute of synthesis
   document.querySelector('#synthesis2 button').onclick = function () {
     var txt = document.querySelector('#synthesis2 input[type=text]').value,
         say = new SpeechSynthesisUtterance(txt);
@@ -16,14 +20,16 @@ Reveal.addEventListener( 'ready', function( event ) {
     window.speechSynthesis.speak(say);
   };
 
-  // NEOSPEECH DEMO
+// NeoSpeech third-party synthesis service
 
+// Safely encode XML for page output
   function encodeXML (s) {
     return (s
       .replace(/</g, '&lt;').replace(/>/g, '&gt;')
     );
   }
 
+// Parse XML result from Neospeech
   function parseXML (r) {
     var parser = new DOMParser();
     var xmlDoc = parser.parseFromString(r, 'application/xml');
@@ -31,10 +37,13 @@ Reveal.addEventListener( 'ready', function( event ) {
     return xmlDoc;
   }
 
-  var neoEmail = 'p_gasston@yahoo.com',
-      neoAcctId = 'd07c6bd47f',
+// Neospeech account vars - you should get your own.
+  var neoEmail = [your neospeech account email],
+      neoAcctId = [your neospeech account id],
+      neoPwd = [your neospeech account password],
       neoURL = 'https://tts.neospeech.com/rest_1_1.php?method=';
-  // var neoOut = document.getElementById('neo-result');
+
+// Async XHR with Promises syntax
   function get(url) {
     return new Promise(function(resolve, reject) {
       var req = new XMLHttpRequest();
@@ -56,6 +65,7 @@ Reveal.addEventListener( 'ready', function( event ) {
     });
   }
 
+// Get the successfully converted sound file and play it
   function neoGetResponse (convNo) {
     var reqURL = neoURL + 'GetConversionStatus&email=' + neoEmail +  '&accountId=' + neoAcctId + '&conversionNumber=' + convNo;
     get(reqURL).then(function (response) {
@@ -75,13 +85,14 @@ Reveal.addEventListener( 'ready', function( event ) {
     });
   }
 
+// Request a sound file with the supplied text
   function neoSendRequest () {
     var neoTxt = document.querySelector('#neospeech input').value;
     var reqOpts = {
       text : encodeURIComponent(neoTxt),
       voice : 'TTS_PAUL_DB'
     };
-    var reqURL = neoURL + 'ConvertSimple&email=' + neoEmail + '&accountId=' + neoAcctId + '&loginKey=LoginKey&loginPassword=46950b9c0218baf8ccae&voice=' + reqOpts.voice + '&outputFormat=FORMAT_WAV&sampleRate=16&text=' + reqOpts.text;
+    var reqURL = neoURL + 'ConvertSimple&email=' + neoEmail + '&accountId=' + neoAcctId + '&loginKey=LoginKey&loginPassword=' + neoPwd + '&voice=' + reqOpts.voice + '&outputFormat=FORMAT_WAV&sampleRate=16&text=' + reqOpts.text;
     get(reqURL).then(function(response) {
 
       var xmlDoc = parseXML(response);
@@ -102,13 +113,13 @@ Reveal.addEventListener( 'ready', function( event ) {
     });
   }
 
+// Run the request function
   document.querySelector('#neospeech #neoreq').onclick = function (e) {
     e.currentTarget.setAttribute('disabled',true);
     neoSendRequest();
   };
 
-  // Speech Recognition
-
+// Simple speech recognition
   var rec1 = new webkitSpeechRecognition();
   rec1.onresult = function (result) {
     document.querySelector('#recognition1 output').textContent = result.results[0][0].transcript;
@@ -118,6 +129,7 @@ Reveal.addEventListener( 'ready', function( event ) {
     rec1.start();
   };
 
+// Speech recognition events
   var rec2 = new webkitSpeechRecognition();
   rec2.onstart = function () {
     Reveal.nextFragment();
@@ -147,6 +159,7 @@ Reveal.addEventListener( 'ready', function( event ) {
     rec2.start();
   };
 
+// Speech recognition with interim results
   var rec3 = new webkitSpeechRecognition();
   rec3.interimResults = true;
   rec3.onresult = function (result) {
@@ -159,8 +172,10 @@ Reveal.addEventListener( 'ready', function( event ) {
     rec3.start();
   };
 
-  // WIT.AI DEMO
+// Wit.ai third-party recognition; you will need to create an account, get your API key, create a new intent called name with the wit/contact entity
+  var witAPIKey = [your wit.ai api key];
 
+// Wit.ai format results
   function kv (k, v) {
     if (toString.call(v) !== '[object String]') {
       v = JSON.stringify(v);
@@ -185,6 +200,7 @@ Reveal.addEventListener( 'ready', function( event ) {
     }
   }
 
+// Wit.ai looks for a name intent
   function startWit1 () {
 
     var wit1 = new Wit.Microphone(document.querySelector('#wit1 #mic1'));
@@ -194,9 +210,10 @@ Reveal.addEventListener( 'ready', function( event ) {
       document.querySelector('#wit1 output').innerHTML = r;
     };
 
-    wit1.connect('FMWVZZJC4OQNVUVDLAFHFB3J4KK2NQBX');
+    wit1.connect(witAPIKey);
   }
 
+// Wit.ai looks for a name intent, replies with synthesis
   function startWit2 () {
 
     var wit2 = new Wit.Microphone(document.querySelector('#wit2 #mic2'));
@@ -208,11 +225,10 @@ Reveal.addEventListener( 'ready', function( event ) {
       window.speechSynthesis.speak(say);
     };
 
-    wit2.connect('FMWVZZJC4OQNVUVDLAFHFB3J4KK2NQBX');
+    wit2.connect(witAPIKey);
   }
 
-  // EVENTS
-
+// Reveal.js slide-based events
   function fragWith (fragEvt) {
     Reveal.addEventListener('fragmentshown', function( fragEvt ) {
       if (fragEvt.fragment.localName === 'span') {
