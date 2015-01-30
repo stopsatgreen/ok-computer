@@ -5,3 +5,5 @@
 My slides from #FEL. On speech synthesis and speech recognition, native implementation in browsers and third-party services. Plenty of live examples.
 
 Run `npm install` to set up, `grunt serve` to run. Some demos work across different browsers, but to see them all you’ll need Chrome.
+
+To see third-party demos you will need accounts from  [Neospeech](https://ws.neospeech.com/) and [Wit](https://wit.ai/).
