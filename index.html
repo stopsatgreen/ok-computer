@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Hello Computer - Front End London</title>
+		<title>OK Computer - Front End London</title>
 
 		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
 		<meta name="author" content="Hakim El Hattab">
@@ -45,7 +45,7 @@
 			<div class="slides">
 
 				<section data-background="images/hal-9000.jpg" data-background-size="cover">
-					<h1>Hello Computer</h1>
+					<h1>OK Computer</h1>
 					<h2>Front End London, 29/01/15</h2>
 				</section>
 
@@ -145,10 +145,10 @@ window.speechSynthesis.speak(say);
 				<section>
 					<h2>Synthesis As A Service</h2>
 					<ol>
-						<li>http://developer.att.com/apis/speech</li>
-						<li>https://ws.neospeech.com/</li>
-						<li>https://www.cereproc.com/en/products/cloud</li>
-						<li>http://www.ivona.com/en/for-business/speech-cloud/</li>
+						<li><a href="http://developer.att.com/apis/speech">developer.att.com/apis/speech</a></li>
+						<li><a href="https://ws.neospeech.com/">ws.neospeech.com/</a></li>
+						<li><a href="https://www.cereproc.com/en/products/cloud">cereproc.com/en/products/cloud</a></li>
+						<li><a href="http://www.ivona.com/en/for-business/speech-cloud/">ivona.com/en/for-business/speech-cloud/</a></li>
 					</ol>
 				</section>
 
@@ -228,10 +228,6 @@ recog.onresult = function () {};
 recog.onnomatch = function () {};
 recog.onerror = function () {};
 					</code></pre>
-
-					<aside class="notes">
-						SpeechRecognitionError interface for reporting errors.
-					</aside>
 				</section>
 
 				<section id="recognition1">
@@ -245,10 +241,7 @@ btn.onclick = recog.start();
 					</code></pre>
 
 					<output class="big"></output>
-
-					<aside class="notes">
-						SpeechRecognitionEvent, results list
-					</aside>
+					<p class="footnote"><i>Click header for demo</i></p>
 				</section>
 
 				<section id="recognition2">
@@ -263,7 +256,7 @@ btn.onclick = recog.start();
 						<li class="fragment">audioend</li>
 						<li class="fragment">end</li>
 					</ol>
-
+					<p class="footnote"><i>Click header for demo</i></p>
 				</section>
 
 				<section id="recognition3">
@@ -280,6 +273,7 @@ btn.onclick = recog.start();
 					</code></pre>
 
 					<output></output>
+					<p class="footnote"><i>Click header for demo</i></p>
 				</section>
 
 				<section>
@@ -309,7 +303,7 @@ btn.onclick = function () {
 				</section>
 
 				<section>
-					<h2>[Picard demo]</h2>
+					<h2><a href="//broken-links.com/teaearlgreyhot">[Picard demo]</a></h2>
 
 					<aside class="notes">
 						Basically just matching a string / regex. But mobile searches tend to be more conversational, so we need to discover intent.
@@ -341,7 +335,7 @@ recog.onrecognition = function (result) {
 					<h1>Wit + Node</h1>
 					<ol>
 						<li>Web Speech API + text</li>
-						<li class="fragment">Direct speech : GuM, Web Audio API</li>
+						<li class="fragment">Direct speech: GuM, Web Audio API</li>
 					</ol>
 
 					<aside class="notes"> http://blog.groupbuddies.com/posts/39-tutorial-html-audio-capture-streaming-to-node-js-no-browser-extensions
@@ -350,7 +344,7 @@ recog.onrecognition = function (result) {
 
 				<section id="wit1">
 					<h1>Wit.ai</h1>
-					<h2 class="trigger">Microphone.js</h2>
+					<h2>Microphone.js</h2>
 					<div id="mic1" class="microphone"></div>
 					<output></output>
 				</section>
@@ -361,7 +355,7 @@ recog.onrecognition = function (result) {
 
 				<section id="wit2">
 					<h1>Wit.ai</h1>
-					<h2 class="trigger">Response</h2>
+					<h2>Response</h2>
 					<div id="mic2" class="microphone"></div>
 				</section>
 
@@ -393,6 +387,11 @@ recog.onrecognition = function (result) {
 				<section>
 					<h1>The End</h1>
 					<h2>Thanks for your patience.</h2>
+				</section>
+
+				<section>
+					<h2>Copyright Note</h2>
+					<p>The video clips in this presentation from the films Moon, Star Trek: The Voyage Home, Her, Star Trek, and 2001: A Space Odyssey belong to their respective copyright holders and are used here without permission.</p>
 				</section>
 
 			</div>

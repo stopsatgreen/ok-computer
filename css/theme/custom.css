@@ -288,8 +288,9 @@ body {
   border-bottom: 5px solid #163C50;
   display: flex;
   list-style: none;
-  margin-left: 0;
-  transform: translateY(120px); }
+  margin: 0 0 140px;
+  position: relative;
+  top: 120px; }
   .reveal #recog-events li {
     flex: 1;
     font-weight: bold;

@@ -72,8 +72,9 @@ $selectionBackgroundColor: rgba(0, 0, 0, 0.99);
     border-bottom: 5px solid $mainColor;
     display: flex;
     list-style: none;
-    margin-left: 0;
-    transform: translateY(120px);
+    margin: 0 0 140px;
+    position: relative;
+    top: 120px;
 
     li {
       flex: 1;
