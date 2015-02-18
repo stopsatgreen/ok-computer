@@ -38,9 +38,9 @@ Reveal.addEventListener( 'ready', function( event ) {
   }
 
 // Neospeech account vars - you should get your own.
-  var neoEmail = [your neospeech account email],
-      neoAcctId = [your neospeech account id],
-      neoPwd = [your neospeech account password],
+  var neoEmail = [EMAIL],
+      neoAcctId = [ACCOUNT ID],
+      neoPwd = [PASSWORD],
       neoURL = 'https://tts.neospeech.com/rest_1_1.php?method=';
 
 // Async XHR with Promises syntax
@@ -58,7 +58,7 @@ Reveal.addEventListener( 'ready', function( event ) {
       };
 
       req.onerror = function() {
-        reject(Error("Network Error"));
+        reject(Error('Network Error'));
       };
 
       req.send();
@@ -173,7 +173,7 @@ Reveal.addEventListener( 'ready', function( event ) {
   };
 
 // Wit.ai third-party recognition; you will need to create an account, get your API key, create a new intent called name with the wit/contact entity
-  var witAPIKey = [your wit.ai api key];
+  var witAPIKey = [API KEY];
 
 // Wit.ai format results
   function kv (k, v) {
